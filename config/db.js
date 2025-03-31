@@ -1,5 +1,3 @@
-// config/db.js
-
 const { Pool } = require('pg');
 const dotenv = require('dotenv');
 
@@ -11,6 +9,9 @@ const pool = new Pool({
   database: process.env.PG_DATABASE,
   password: process.env.PG_PASSWORD,
   port: process.env.PG_PORT,
+  ssl: {
+    rejectUnauthorized: false,  // Accept self-signed certificates (Aiven provides SSL certificates)
+  },
 });
 
 // Test the connection on startup
