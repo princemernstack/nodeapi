@@ -1,10 +1,8 @@
-// server.js
-
-const express = require('express');
-const dotenv = require('dotenv');
-const authRoutes = require('./routes/authRoutes');
-const logRequest = require('./middleware/loggerMiddleware');  // Import the logger middleware
-const pool = require('./config/db'); // Import the db connection for testing
+const express = require("express");
+const dotenv = require("dotenv");
+const authRoutes = require("./routes/authRoutes");
+const logRequest = require("./middleware/loggerMiddleware");
+const pool = require("./config/db");
 
 dotenv.config();
 
@@ -17,7 +15,7 @@ app.use(express.json());
 app.use(logRequest);
 
 // Register routes under the '/api/auth' path
-app.use('/api/auth', authRoutes);
+app.use("/api", authRoutes);
 
 // Starting the server only if DB is connected
 const PORT = process.env.PORT || 5000;
