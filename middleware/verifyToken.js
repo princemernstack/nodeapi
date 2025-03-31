@@ -3,7 +3,8 @@ const dotenv = require("dotenv");
 dotenv.config();
 const pool = require("../config/db");
 const verifyToken = async (req, res, next) => {
-  const token = req.headers["authorization"]?.split(" ")[1];
+  const authorization = req.headers["authorization"];
+  const token = authorization && authorization.split(" ")[1];
 
   if (!token) {
     return res
